@@ -4,26 +4,40 @@ const app = express();
 
 app.use(bodyParser.json());
 
+const validateNumbers = (a, b) => typeof a === 'number' && typeof b === 'number';
+
 app.post('/sumar', (req, res) => {
     const { a, b } = req.body;
+    if (!validateNumbers(a, b)) {
+        return res.status(400).json({ error: 'Los parámetros a y b deben ser números.' });
+    }
     const resultado = a + b;
     res.json({ resultado });
 });
 
 app.post('/restar', (req, res) => {
     const { a, b } = req.body;
+    if (!validateNumbers(a, b)) {
+        return res.status(400).json({ error: 'Los parámetros a y b deben ser números.' });
+    }
     const resultado = a - b;
     res.json({ resultado });
 });
 
 app.post('/multiplicar', (req, res) => {
     const { a, b } = req.body;
+    if (!validateNumbers(a, b)) {
+        return res.status(400).json({ error: 'Los parámetros a y b deben ser números.' });
+    }
     const resultado = a * b;
     res.json({ resultado });
 });
 
 app.post('/dividir', (req, res) => {
     const { a, b } = req.body;
+    if (!validateNumbers(a, b)) {
+        return res.status(400).json({ error: 'Los parámetros a y b deben ser números.' });
+    }
     if (b === 0) {
         return res.status(400).json({ error: 'No se puede dividir entre cero.' });
     }
