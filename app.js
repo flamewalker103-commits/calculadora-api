@@ -12,7 +12,7 @@ app.post('/sumar', (req, res) => {
         return res.status(400).json({ error: 'Los parámetros a y b deben ser números.' });
     }
     const resultado = a + b;
-    res.json({ resultado });
+    res.json({ resultado, operation: 'suma' });
 });
 
 app.post('/restar', (req, res) => {
@@ -21,7 +21,7 @@ app.post('/restar', (req, res) => {
         return res.status(400).json({ error: 'Los parámetros a y b deben ser números.' });
     }
     const resultado = a - b;
-    res.json({ resultado });
+    res.json({ resultado, operation: 'resta' });
 });
 
 app.post('/multiplicar', (req, res) => {
@@ -30,7 +30,7 @@ app.post('/multiplicar', (req, res) => {
         return res.status(400).json({ error: 'Los parámetros a y b deben ser números.' });
     }
     const resultado = a * b;
-    res.json({ resultado });
+    res.json({ resultado, operation: 'multiplicación' });
 });
 
 app.post('/dividir', (req, res) => {
@@ -42,7 +42,7 @@ app.post('/dividir', (req, res) => {
         return res.status(400).json({ error: 'No se puede dividir entre cero.' });
     }
     const resultado = a / b;
-    res.json({ resultado });
+    res.json({ resultado, operation: 'división' });
 });
 
 const PORT = process.env.PORT || 3000;
